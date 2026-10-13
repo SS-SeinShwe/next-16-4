@@ -1,6 +1,10 @@
+import { cacheLife } from "next/cache";
 import React from "react";
 
 async function Posts() {
+  "use cache";
+  cacheLife("hours");
+
   const res = await fetch("https://api.vercel.app/blog");
   const posts = await res.json();
   return (
